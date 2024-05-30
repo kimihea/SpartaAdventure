@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEditor.Timeline.TimelinePlaybackControls;
@@ -10,6 +11,7 @@ public partial class PlayerController : MonoBehaviour
     [Header("Moverment")]
     public float moveSpeed;
     private Vector2 curMovementInput;
+    Vector3 beforeDirection;
     public float jumpPower;
     public float loseStamina;
     public LayerMask groundLayerMask;
@@ -55,7 +57,23 @@ public partial class PlayerController : MonoBehaviour
         dir *= moveSpeed;
         if (dash) dir *=2;
         dir.y = _rigidbody.velocity.y;
-        _rigidbody.velocity = dir;
+
+        if(dir != Vector3.zero)
+        {
+            _rigidbody.velocity = dir;
+            beforeDirection = dir;
+        }
+        else
+        {
+            if(dir != beforeDirection)
+            {
+                _rigidbody.velocity = dir;
+                beforeDirection = dir;
+            }
+        }
+        Debug.Log(_rigidbody.velocity);
+
+        //_rigidbody.velocity = dir;
     }
 
     void CameraLook()

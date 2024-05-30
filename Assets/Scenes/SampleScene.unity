@@ -489,7 +489,7 @@ GameObject:
   - component: {fileID: 139988946}
   - component: {fileID: 139988944}
   m_Layer: 0
-  m_Name: Main Camera (1)
+  m_Name: CameraTPS
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -862,11 +862,11 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 55
-  cameraContainer: {fileID: 963194228}
+  cameraContainer: {fileID: 859050201}
   cameraFPS: {fileID: 963194227}
   cameraTPS: {fileID: 139988944}
-  minXLook: -65
-  maxXLook: 65
+  minXLook: -80
+  maxXLook: 80
   dash: 0
   lookSensitivity: 0.1
   canLook: 1
@@ -880,7 +880,7 @@ Transform:
   m_GameObject: {fileID: 504170557}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.96, y: 0, z: 0}
+  m_LocalPosition: {x: 17.27, y: 4.12, z: 5.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -911,9 +911,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &504170563
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2840,8 +2840,10 @@ GameObject:
   - component: {fileID: 1787982579}
   - component: {fileID: 1787982578}
   - component: {fileID: 1787982577}
+  - component: {fileID: 1787982581}
+  - component: {fileID: 1787982582}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2866,8 +2868,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.2574739, y: 0.34601158, z: 0.29081386}
-  m_Center: {x: 0.011583511, y: 0.17364883, z: -0.000000007450581}
+  m_Size: {x: 0.6800829, y: 0.33092085, z: 1.0376165}
+  m_Center: {x: -0.012490519, y: 0.16610356, z: 0.14106682}
 --- !u!33 &1787982578
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2927,12 +2929,56 @@ Transform:
   m_GameObject: {fileID: 1787982576}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.71, y: 0.42, z: 12.925}
+  m_LocalPosition: {x: 19.46, y: 2, z: 13.28}
   m_LocalScale: {x: 6.93, y: 6.93, z: 6.93}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1787982581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787982576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35d26e735fcb44c43b360ca05e5d7bc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transformRock: {fileID: 1787982580}
+  destination: {x: 0, y: 0, z: 0}
+  nowPosition: {x: 0, y: 0, z: 0}
+  speed: 1
+  _rigidBody: {fileID: 1787982582}
+--- !u!54 &1787982582
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787982576}
+  serializedVersion: 4
+  m_Mass: 9.49
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 116
+  m_CollisionDetection: 1
 --- !u!224 &1789203056 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6513747802668338741, guid: deaa112abbda23b4fa58f90dd3044555, type: 3}
