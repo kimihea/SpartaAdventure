@@ -26,7 +26,7 @@ public class MovingRock : MonoBehaviour
         //transform.position = new Vector3(transform.position.x,2, transform.position.z);
         //transformRock.position = Vector3.MoveTowards(transformRock.position, targetPosition, speed * Time.deltaTime);
 
-        //if Object's transfrom moves by rigidbody's velocity, can't active isKinematic and Object will be disturbed by player,enemy
+        //if Object's transfrom moves by rigidbody's velocity then Object shouldn't active isKinematic and Object will be disturbed by player,enemy
         //_rigidBody.velocity = targetPosition.normalized*speed;
         if (Vector3.Distance(transformRock.position, targetPosition) < 0.1f)
         {
